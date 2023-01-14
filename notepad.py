@@ -76,7 +76,7 @@ class MyMainWindow(QMainWindow):
         exit_file.triggered.connect(self.exit)
         open_file.triggered.connect(self.open)
         save_file.triggered.connect(self.save)
-        save_as_file.triggered.connect(self.saveas)
+        save_as_file.triggered.connect(self.save_as)
         edit_menu = my_menu.addMenu("Edit")
         view_menu = my_menu.addMenu("View")
         edit_menu.setObjectName("exit")
@@ -106,7 +106,7 @@ class MyMainWindow(QMainWindow):
         # with open(output, 'w') as file_data:
         #     file_data.write(data)
 
-    def saveas(self):
+    def save_as(self):
         text = QInputDialog.getText(self, 'Save File', 'Enter File name:')
         extension = QInputDialog.getText(self, 'Save File', 'Enter File type')
         output = str(text[0]) + "." + str(extension[0])
