@@ -86,7 +86,6 @@ class MyMainWindow(QMainWindow):
         self.b.move(0, 40)
         self.b.resize(width, height + 50)
 
-
     def new_file_func(self):
         new_window.show()
 
@@ -97,43 +96,50 @@ class MyMainWindow(QMainWindow):
         sys.exit()
 
     def save(self):
-        text = QInputDialog.getText(self, 'Save File', 'Enter File name:')
-        output = str(text[0]) + '.txt'
+        text = QFileDialog.getSaveFileName(self, 'Save File')
+        file = open(str(text[0]), 'w')
         data = self.b.toPlainText()
-        with open(output, 'w') as file_data:
-            file_data.write(data)
+        with file:
+            file.write(data)
+        # text = QInputDialog.getText(self, 'Save File', 'Enter File name:')
+        # output = str(text[0]) + '.txt'
+        # data = self.b.toPlainText()
+        # with open(output, 'w') as file_data:
+        #     file_data.write(data)
 
     def saveas(self):
         text = QInputDialog.getText(self, 'Save File', 'Enter File name:')
-        extension = QInputDialog.getText(self,'Save File', 'Enter File type')
-        output = str(text[0]) + "."+str(extension[0])
+        extension = QInputDialog.getText(self, 'Save File', 'Enter File type')
+        output = str(text[0]) + "." + str(extension[0])
         data = self.b.toPlainText()
-        if str(text[0]) or str(extension[0]) !="":
+        if str(text[0]) or str(extension[0]) != "":
             with open(output, 'w') as file_data:
                 file_data.write(data)
 
-
-
-
     def open(self):
-        text = QInputDialog.getText(self, 'Open File', 'Enter File name:')
+        text = QFileDialog.getOpenFileName(self, 'Open File')
+        file = open(str(text[0]), 'r')
+        with file:
+            output = file.read()
+            self.b.setPlainText(output)
+        # text = QInputDialog.getText(self, 'Open File', 'Enter File name:')
 
-        file_path = "D:" + chr(92) + "Advance Programming Techniques" + chr(92) + "Programs" + chr(92) + str(
-            text[0]) + '.txt'
-        if os.path.exists(file_path):
-            with open(file_path, 'r') as file_data:
-                output = file_data.read()
-                self.b.setPlainText(output)
-        else:
-            print("Path Doesnt Exist")
-            # msg = QMessageBox()
-            # msg.setIcon(QMessageBox.Information)
-            #
-            # msg.setText("This is a message box")
-            # msg.setInformativeText("This is additional information")
-            # msg.setWindowTitle("MessageBox demo")
-            # msg.setDetailedText("The details are as follows:")
-            # msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        # file_path = "D:" + chr(92) + "Advance Programming Techniques" + chr(92) + "Programs" + chr(92) + str(
+        #     text[0]) + '.txt'
+        # if os.path.exists(file_path):
+        #     with open(file_path, 'r') as file_data:
+        #         output = file_data.read()
+        #         self.b.setPlainText(output)
+        # else:
+        #     print("Path Doesnt Exist")
+        # msg = QMessageBox()
+        # msg.setIcon(QMessageBox.Information)
+        #
+        # msg.setText("This is a message box")
+        # msg.setInformativeText("This is additional information")
+        # msg.setWindowTitle("MessageBox demo")
+        # msg.setDetailedText("The details are as follows:")
+        # msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
 
 
 app = QApplication([])
