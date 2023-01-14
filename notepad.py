@@ -1,7 +1,6 @@
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 import sys
-import os
 
 
 width = 1150
