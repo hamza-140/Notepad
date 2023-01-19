@@ -4,9 +4,16 @@
 
 - 📺 Sample Output:
 
+![screenshot1](https://user-images.githubusercontent.com/80567400/213484557-9ef2f794-fc8f-4bbb-8fad-f1e00daaee9e.jpg)
 
-![image](https://user-images.githubusercontent.com/80567400/213431069-ffbe7151-e31b-47bd-b557-ca9e6d97f424.png)
 
+![screenshot2](https://user-images.githubusercontent.com/80567400/213484620-75d121d9-f9c7-4953-8f75-eade7ed473ce.jpg)
+
+
+![screenshot3](https://user-images.githubusercontent.com/80567400/213484651-ad3134b5-d341-423a-8470-be6f98c85d64.jpg)
+
+
+![screenshot4](https://user-images.githubusercontent.com/80567400/213484691-4d25e714-d3b2-42c4-882e-1a781bdb347a.jpg)
 
 
 <br>
@@ -24,7 +31,7 @@
 <h3 align="left">Connect with me:</h3>
 <p align="left">
 <a href="https://twitter.com/20s_hamza" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="20s_hamza" height="30" width="40" /></a>
-<a href="https://linkedin.com/in/20s.hamza" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="20s.hamza" height="30" width="40" /></a>
+<a href="https://linkedin.com/in/hamza140" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="hamza140" height="30" width="40" /></a>
 <a href="https://instagram.com/20s.hamza" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="20s.hamza" height="30" width="40" /></a>
 </p>
 
