@@ -15,7 +15,7 @@
 
 - 🔭 I’m currently studying in [University of Gujrat](https://www.uog.edu/)
 
-- 🌱 I’m currently learning **Mobile App Development, Web Development etc.**
+- 🌱 I’m currently learning **Desktop GUI Development, Web Development etc.**
 
 - 👨‍💻 All of my projects are available [Here](https://github.com/hamza-140/)
 
