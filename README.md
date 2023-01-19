@@ -4,7 +4,8 @@
 
 - 📺 Sample Output:
 
-https://user-images.githubusercontent.com/80567400/212469544-1b35ddfe-8a60-4c29-ad36-e8ba70982d06.mp4
+
+![image](https://user-images.githubusercontent.com/80567400/213431069-ffbe7151-e31b-47bd-b557-ca9e6d97f424.png)
 
 
 
