@@ -4,9 +4,16 @@
 
 - 📺 Sample Output:
 
+![screenshot1](https://user-images.githubusercontent.com/80567400/213484557-9ef2f794-fc8f-4bbb-8fad-f1e00daaee9e.jpg)
 
-![image](https://user-images.githubusercontent.com/80567400/213431069-ffbe7151-e31b-47bd-b557-ca9e6d97f424.png)
 
+![screenshot2](https://user-images.githubusercontent.com/80567400/213484620-75d121d9-f9c7-4953-8f75-eade7ed473ce.jpg)
+
+
+![screenshot3](https://user-images.githubusercontent.com/80567400/213484651-ad3134b5-d341-423a-8470-be6f98c85d64.jpg)
+
+
+![screenshot4](https://user-images.githubusercontent.com/80567400/213484691-4d25e714-d3b2-42c4-882e-1a781bdb347a.jpg)
 
 
 <br>
