@@ -34,6 +34,7 @@ class MyMainWindow(QMainWindow):
             {
                 background-color: #EAF6F6;
                 color: #000;
+
             }
             QMenuBar::item::selected
             {
@@ -45,7 +46,7 @@ class MyMainWindow(QMainWindow):
                 background-color: #FFFFFF;
                 color: #000;
                 padding:10;
-
+                border-radius: 20px;
             }
             QMenu::item::selected
             {
@@ -73,32 +74,95 @@ class MyMainWindow(QMainWindow):
         save_file.setShortcut(QKeySequence('Ctrl+S'))
         save_as_file = QAction("Save as", self)
         save_as_file.setShortcut(QKeySequence('Ctrl+Shift+S'))
-        print_file = QAction("Print", self)
-        print_file.setShortcut(QKeySequence('Ctrl+P'))
-        print_file.triggered.connect(self.printer)
         exit_file = QAction("Exit", self)
         file_menu.addAction(new_file)
         file_menu.addAction(new_window_file)
         file_menu.addAction(open_file)
         file_menu.addAction(save_file)
         file_menu.addAction(save_as_file)
-        file_menu.addAction(print_file)
         file_menu.addAction(exit_file)
         exit_file.triggered.connect(self.exit)
         open_file.triggered.connect(self.open)
         save_file.triggered.connect(self.save)
         save_as_file.triggered.connect(self.save_as)
         edit_menu = my_menu.addMenu("Edit")
+        undo_edit = QAction("Undo",self)
+        edit_menu.addAction(undo_edit)
+        undo_edit.setShortcut(QKeySequence('Ctrl+Z'))
+        undo_edit.triggered.connect(self.undof)
+        copy_edit = QAction("Copy", self)
+        edit_menu.addAction(copy_edit)
+        copy_edit.setShortcut(QKeySequence('Ctrl+C'))
+        copy_edit.triggered.connect(self.copyf)
+        paste_edit = QAction("Paste", self)
+        edit_menu.addAction(paste_edit)
+        paste_edit.setShortcut(QKeySequence('Ctrl+V'))
+        paste_edit.triggered.connect(self.printf)
+        cut_edit = QAction("Cut", self)
+        edit_menu.addAction(cut_edit)
+        cut_edit.setShortcut(QKeySequence('Ctrl+X'))
+        cut_edit.triggered.connect(self.cutf)
         view_menu = my_menu.addMenu("View")
-        edit_menu.setObjectName("exit")
+        fontfam = view_menu.addMenu("Font")
+        timesnew = QAction("Times New Roman",self)
+        timesnew.triggered.connect(self.times)
+        fontfam.addAction(timesnew)
+        arial = QAction("Arial", self)
+        arial.triggered.connect(self.arial)
+        fontfam.addAction(arial)
+        zoom = view_menu.addMenu("Zoom")
+        zoomin = QAction("Zoom In", self)
+        zoomin.triggered.connect(self.zoomin)
+        zoom.addAction(zoomin)
+        zoomout = QAction("Zoom Out", self)
+        zoomout.triggered.connect(self.zoomout)
+        zoom.addAction(zoomout)
+        status_bar = QAction("Status Bar", self)
+        view_menu.addAction(status_bar)
+
+
         # new.triggered.connect(self.test)
         self.b = QPlainTextEdit(self)
+        self.b.textChanged.connect(self.textchanged)
         self.b.move(0, 40)
         self.b.resize(width, height + 50)
+        self.statusBar = QStatusBar(self)
+        self.statusBar.setStyleSheet("background-color:#EAF6F6;padding:8px")
+        self.setStatusBar(self.statusBar)
 
-    def printer(self):
-        dialog = QPrinter()
-        dialog.printProgram()
+    def zoomin(self):
+        self.b.setStyleSheet("font-size:35px")
+
+    def zoomout(self):
+        self.b.setStyleSheet("font-size:12px")
+    def times(self):
+        self.b.setStyleSheet("font-family:Times New Roman")
+
+    def arial(self):
+        self.b.setStyleSheet("font-family:Arial")
+    def cutf(self):
+        QApplication.clipboard().setText(self.b.toPlainText())
+        self.b.setPlainText("")
+    def copyf(self):
+        QApplication.clipboard().setText(self.b.toPlainText())
+    def printf(self):
+        self.b.setPlainText(self.b.toPlainText()+QApplication.clipboard().text())
+    def undof(self):
+        a = self.b.toPlainText()
+        b = len(a)-1
+        c = a[:b]
+        self.b.setPlainText(c)
+    def textchanged(self):
+        a = self.b.toPlainText()
+        b = len(a)
+        self.statusBar.showMessage("    No. of Words: "+str(b))
+
+    def counter(self):
+        no = len(self.b.toPlainText())
+        if no>0:
+            return no
+        else:
+            return 69
     def new_file_func(self):
         new_window.show()
 
