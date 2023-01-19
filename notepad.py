@@ -1,6 +1,8 @@
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
+from PyQt6.QtCore import *
 import sys
+from PyQt6.QtPrintSupport import QPrinter
 
 
 width = 1150
@@ -14,6 +16,10 @@ class MyMainWindow(QMainWindow):
         self.setMouseTracking(True)
         self.setFixedSize(width, height)
         my_menu = QMenuBar(self)
+        # self.shortcut_save = QShortcut(QKeySequence('Ctrl+S'), self)
+        # self.shortcut_save.activated.connect(self.save)
+        # self.shortcut_open = QShortcut(QKeySequence('Ctrl+O'), self)
+        # self.shortcut_open.activated.connect(self.open)
         my_menu.setStyleSheet(
             """
             QMenuBar
@@ -55,22 +61,27 @@ class MyMainWindow(QMainWindow):
         file_menu = my_menu.addMenu("File")
         file_menu.setObjectName("file")
         # file_menu.setStyleSheet("background-color:#FFFFFF;padding-top:10;")
-        new_file = QAction("New                                 ", self)
-        new_window_file = QAction("New Window                   ", self)
+        new_file = QAction("New", self)
+        new_file.setShortcut(QKeySequence("Ctrl+N"))
+        new_window_file = QAction("New Window", self)
+        new_window_file.setShortcut(QKeySequence("Ctrl+Shift+N"))
         new_window_file.triggered.connect(self.new_file_func)
         new_file.triggered.connect(self.reset)
-        open_file = QAction("Open                                ", self)
-        save_file = QAction("Save                                 ", self)
-        save_as_file = QAction("Save as                             ", self)
-        page_setup_file = QAction("Page Setup", self)
+        open_file = QAction("Open", self)
+        open_file.setShortcut(QKeySequence('Ctrl+O'))
+        save_file = QAction("Save", self)
+        save_file.setShortcut(QKeySequence('Ctrl+S'))
+        save_as_file = QAction("Save as", self)
+        save_as_file.setShortcut(QKeySequence('Ctrl+Shift+S'))
         print_file = QAction("Print", self)
+        print_file.setShortcut(QKeySequence('Ctrl+P'))
+        print_file.triggered.connect(self.printer)
         exit_file = QAction("Exit", self)
         file_menu.addAction(new_file)
         file_menu.addAction(new_window_file)
         file_menu.addAction(open_file)
         file_menu.addAction(save_file)
         file_menu.addAction(save_as_file)
-        file_menu.addAction(page_setup_file)
         file_menu.addAction(print_file)
         file_menu.addAction(exit_file)
         exit_file.triggered.connect(self.exit)
@@ -85,6 +96,9 @@ class MyMainWindow(QMainWindow):
         self.b.move(0, 40)
         self.b.resize(width, height + 50)
 
+    def printer(self):
+        dialog = QPrinter()
+        dialog.printProgram()
     def new_file_func(self):
         new_window.show()
 
@@ -95,11 +109,16 @@ class MyMainWindow(QMainWindow):
         sys.exit()
 
     def save(self):
-        text = QFileDialog.getSaveFileName(self, 'Save File')
-        file = open(str(text[0]), 'w')
-        data = self.b.toPlainText()
-        with file:
-            file.write(data)
+        try:
+            files_types = "Text Documents (*.txt)"
+            text = QFileDialog.getSaveFileName(self, 'Save File', 'untitled.txt', filter=files_types)
+            # text = QFileDialog.getSaveFileName(self, 'Save File',"","Text Documents(.txt)",)
+            file = open(str(text[0]), 'w')
+            data = self.b.toPlainText()
+            with file:
+                file.write(data)
+        except:
+            window.show()
         # text = QInputDialog.getText(self, 'Save File', 'Enter File name:')
         # output = str(text[0]) + '.txt'
         # data = self.b.toPlainText()
@@ -116,11 +135,14 @@ class MyMainWindow(QMainWindow):
                 file_data.write(data)
 
     def open(self):
-        text = QFileDialog.getOpenFileName(self, 'Open File')
-        file = open(str(text[0]), 'r')
-        with file:
-            output = file.read()
-            self.b.setPlainText(output)
+        try:
+            text = QFileDialog.getOpenFileName(self, 'Open File')
+            file = open(str(text[0]), 'r')
+            with file:
+                output = file.read()
+                self.b.setPlainText(output)
+        except:
+            window.show()
         # text = QInputDialog.getText(self, 'Open File', 'Enter File name:')
 
         # file_path = "D:" + chr(92) + "Advance Programming Techniques" + chr(92) + "Programs" + chr(92) + str(
